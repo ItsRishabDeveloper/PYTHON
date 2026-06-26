@@ -31,4 +31,31 @@ strict_function(1, 2, kw_only=3) # valid call
 # Lambda Functions
 square = lambda x: x ** 2
 print(square(4))  # 16
+# First-Class Objects
+def shout(text):
+    return text.upper()
+def process_text(func, text):  # Function passed as an argument
+    return func(text)
+process_text(shout, "hello")  # "HELLO"
+# Closures
+def multiplier(factor):
+    def multiply(number):
+        return number * factor  # Remembers 'factor'
+    return multiply
+triple = multiplier(3)
+print(triple(10))  # 30
+# Decorators
+def my_decorator(func):
+    def wrapper():
+        print("Something is happening before the function is called.")
+        func()
+        print("Something is happening after the function is called.")
+    return wrapper
+@my_decorator
+def say_wheels():
+    print("Wheels up!")
+say_wheels()
+# Type Hinting (Modern Python)
+def calculate_velocity(distance: float, time: float) -> float:
+    return distance / time
 

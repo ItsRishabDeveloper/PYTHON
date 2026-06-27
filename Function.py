@@ -58,4 +58,35 @@ say_wheels()
 # Type Hinting (Modern Python)
 def calculate_velocity(distance: float, time: float) -> float:
     return distance / time
+# Function Internals: The __code__ Object
+def analyze_me(a, b=2):
+    secret_var = "internal"
+    return a + b
+# Generators and the yield Keyword
+def countdown(n):
+    while n > 0:
+        yield n
+        n -= 1
+counter = countdown(3)
+print(next(counter))  # 3
+print(next(counter))  # 2
+# Recursion and the Call Stack
+def factorial(n):
+    if n == 1:
+        return 1
+    return n * factorial(n - 1)
+# Higher-Order Functions: map, filter, and reduce
+from functools import reduce
+
+nums = [1, 2, 3, 4]
+# Functional approach
+squared = map(lambda x: x**2, nums)
+evens = filter(lambda x: x % 2 == 0, nums)
+total = reduce(lambda x, y: x + y, nums)
+# Pythonic Critique
+# Preferred Pythonic equivalent
+squared = [x**2 for x in nums]
+evens = [x for x in nums if x % 2 == 0]
+total = sum(nums)
+
 
